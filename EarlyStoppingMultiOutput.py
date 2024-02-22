@@ -23,12 +23,12 @@ class Early_stopping_multi_output(tf.keras.callbacks.Callback):
                 continue
             if self.mode == "max" and current_value > self.best_monitored_values[i]:
                 self.best_monitored_values[i] = current_value
-                self.wait = 0
+                self.wait[i] = 0
                 if self.save_weights:
                     self.best_weights = self.model.get_weights()         
             elif self.mode == "min" and current_value < self.best_monitored_values[i]:
                 self.best_monitored_values[i] = current_value
-                self.wait = 0
+                self.wait[i] = 0
                 if self.save_weights:
                     self.best_weights = self.model.get_weights()
 
